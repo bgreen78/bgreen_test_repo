@@ -1,0 +1,31 @@
+---
+title: "GitTester RMD"
+author: "Bea Green"
+date: "6/4/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+This is a tester file to use some Github functions. Here is a chunk of code:
+```{r}
+library(gardenR)
+library(tidyverse)
+```
+
+```{r}
+garden_harvest %>% 
+  filter(vegetable == "beans") %>% 
+  group_by(variety) %>% 
+  summarize(cum_weight=cumsum(weight), date) %>% 
+  ggplot(aes(x=date, y=cum_weight))+
+  geom_line()+
+  facet_wrap(vars(variety), scales = "free")+
+  labs(title= "Bean Varieties' Productivity", y = "Cumulative Weight (g)", x="")
+  theme(legend.position= "none")
+ 
+```
+
+
